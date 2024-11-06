@@ -3,7 +3,8 @@ import requests
 from app import create_app
 from config import Config
 
-app = create_app()
+# Import the app instance created by create_app in run.py
+app = create_app()  # This line was previously causing the error
 
 @app.route('/webhook', methods=['GET', 'POST'])
 def webhook():
