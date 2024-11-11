@@ -4,7 +4,7 @@ from app import create_app
 from config import Config
 
 # Import the app instance created by create_app in run.py
-app = create_app()  # This line was previously causing the error
+app = create_app()
 
 @app.route('/webhook', methods=['GET', 'POST'])
 def webhook():
