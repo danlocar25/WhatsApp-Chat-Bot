@@ -1,0 +1,11 @@
+[build]
+  functions = "netlify-functions"
+  publish = "public"
+
+[build.environment]
+  FLASK_ENV = "production"
+
+[[redirects]]
+  from = "/webhook"
+  to = "/.netlify/functions/whatsapp_chat_bot"
+  status = 200
