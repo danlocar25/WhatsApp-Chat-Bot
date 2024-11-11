@@ -1,11 +1,11 @@
 [build]
-  functions = "netlify-functions"
-  publish = "public"
+  functions = "netlify-functions"   # Path for serverless functions
+  publish = "."  # Publish the entire directory, assuming Flask is the root directory
 
 [build.environment]
-  FLASK_ENV = "production"
+  FLASK_ENV = "production"  # Environment for Flask
 
 [[redirects]]
-  from = "/webhook"
-  to = "/.netlify/functions/whatsapp_chat_bot"
-  status = 200
+  from = "/webhook"  # Redirect /webhook to the serverless function
+  to = "/.netlify/functions/whatsapp_chat_bot"  # Point to the function's endpoint
+  status = 200  # Status code for successful redirect
