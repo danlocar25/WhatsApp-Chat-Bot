@@ -21,14 +21,13 @@ def webhook():
         data = request.get_json()
 
         # Handle incoming message (you can add more logic here)
-        for entry in data['entry']:
-            for messaging_event in entry['messaging']:
+        for entry in data.get('entry', []):
+            for messaging_event in entry.get('messaging', []):
                 if 'message' in messaging_event:
                     phone_number = messaging_event['sender']['id']
                     text = messaging_event['message']['text']
                     send_message(phone_number, text)
         return 'OK', 200
-
 
 def send_message(phone_number, message):
     url = f'https://graph.facebook.com/v15.0/{Config.PHONE_NUMBER_ID}/messages'

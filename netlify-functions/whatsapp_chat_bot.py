@@ -8,8 +8,9 @@ app = create_app()
 def handler(event, context):
     data = json.loads(event['body'])
     
-    for entry in data['entry']:
-        for messaging_event in entry['messaging']:
+    # Loop through entries and messaging events to process the messages
+    for entry in data.get('entry', []):
+        for messaging_event in entry.get('messaging', []):
             if 'message' in messaging_event:
                 phone_number = messaging_event['sender']['id']
                 text = messaging_event['message']['text']
